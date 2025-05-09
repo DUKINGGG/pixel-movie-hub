@@ -19,7 +19,8 @@ const Login = () => {
 
   return (
     <AuthLayout 
-      title={<span className="rgb-text">Sign In</span>}
+      title="Sign In"
+      titleElement={<span className="rgb-text">Sign In</span>}
       footer={
         <motion.div 
           className="text-gray-300 text-center"

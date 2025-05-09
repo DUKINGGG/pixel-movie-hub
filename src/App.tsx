@@ -5,6 +5,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { AuthProvider } from "@/contexts/AuthContext";
+import { AnimatePresence } from "framer-motion";
 
 // Pages
 import Index from "./pages/Index";
@@ -26,18 +27,20 @@ const App = () => (
         <Toaster />
         <Sonner />
         <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<Index />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/signup" element={<Signup />} />
-            <Route path="/browse" element={<Browse />} />
-            <Route path="/movies" element={<Movies />} />
-            <Route path="/series" element={<Series />} />
-            <Route path="/details/:id" element={<ContentDetails />} />
-            <Route path="/watch/:contentId" element={<Watch />} />
-            <Route path="/watch/:contentId/:episodeId" element={<Watch />} />
-            <Route path="*" element={<NotFound />} />
-          </Routes>
+          <AnimatePresence mode="wait">
+            <Routes>
+              <Route path="/" element={<Index />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/signup" element={<Signup />} />
+              <Route path="/browse" element={<Browse />} />
+              <Route path="/movies" element={<Movies />} />
+              <Route path="/series" element={<Series />} />
+              <Route path="/details/:id" element={<ContentDetails />} />
+              <Route path="/watch/:contentId" element={<Watch />} />
+              <Route path="/watch/:contentId/:episodeId" element={<Watch />} />
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </AnimatePresence>
         </BrowserRouter>
       </TooltipProvider>
     </AuthProvider>

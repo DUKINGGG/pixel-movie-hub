@@ -73,6 +73,58 @@
   .video-container {
     @apply relative w-full pt-[56.25%];
   }
+
+  /* RGB Effects */
+  .rgb-text {
+    @apply font-bold;
+    animation: rgb-text-animation 8s linear infinite;
+  }
+  
+  .rgb-border {
+    position: relative;
+    border-radius: var(--radius);
+    overflow: hidden;
+  }
+  
+  .rgb-border::before {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    border-radius: inherit;
+    background: linear-gradient(45deg, #ff0000, #00ff00, #0000ff, #ff0000);
+    background-size: 400% 400%;
+    animation: rgb-border-animation 6s linear infinite;
+    z-index: -1;
+  }
+  
+  .rgb-glow {
+    box-shadow: 0 0 15px rgba(255, 0, 128, 0.7);
+    animation: rgb-glow-animation 5s infinite alternate;
+  }
+  
+  .rgb-bg {
+    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+    background-size: 400% 400%;
+    animation: rgb-bg-animation 15s ease infinite;
+  }
+
+  /* Modern UI components */
+  .glass-card {
+    @apply bg-black/20 backdrop-blur-lg border border-white/10 rounded-lg;
+  }
+  
+  .neo-blur {
+    @apply backdrop-blur-md bg-black/40 border border-white/5 rounded-lg;
+  }
+  
+  .text-gradient {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(to right, #ff8a00, #e52e71);
+  }
+  
+  .pulse-slow {
+    animation: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
 }
 
 /* Custom scrollbar */
@@ -92,4 +144,36 @@
 
 ::-webkit-scrollbar-thumb:hover {
   background: #3e4a5c;
+}
+
+/* RGB Animations */
+@keyframes rgb-text-animation {
+  0% { color: #ff0000; }
+  33% { color: #00ff00; }
+  66% { color: #0000ff; }
+  100% { color: #ff0000; }
+}
+
+@keyframes rgb-border-animation {
+  0% { background-position: 0 0; }
+  100% { background-position: 400% 0; }
+}
+
+@keyframes rgb-glow-animation {
+  0% { box-shadow: 0 0 15px rgba(255, 0, 128, 0.7); }
+  25% { box-shadow: 0 0 15px rgba(0, 255, 128, 0.7); }
+  50% { box-shadow: 0 0 15px rgba(0, 128, 255, 0.7); }
+  75% { box-shadow: 0 0 15px rgba(128, 0, 255, 0.7); }
+  100% { box-shadow: 0 0 15px rgba(255, 0, 128, 0.7); }
+}
+
+@keyframes rgb-bg-animation {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.8; }
 }
